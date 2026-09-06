@@ -11,7 +11,8 @@ shows on its own settings page.
 | Weekly | 7-day window usage (percentage of your plan's allowance) |
 | Last 4 Weeks | Charges beyond your plan over the last four weeks. $0.00 on a subscription; real amounts for pay-as-you-go and API-key usage |
 
-Your plan (Free, Pro, Max) is shown beside the provider name.
+Your plan (Free, Pro, Max) is shown beside the provider name. If Ollama can't tell OpenUsage which plan
+you're on, the badge is left off and the card explains why — the meters keep working either way.
 
 Session and Weekly are always visible and start pinned to the menu bar. Last 4 Weeks sits behind the
 provider's caret — you can move any of them in **Customize**. A $0.00 on that row means no extra charges,
@@ -69,5 +70,8 @@ at all is reported as an invalid response.
   Run `ollama signin`.
 - **"Couldn't read ~/.ollama/id_ed25519"** — the key file exists but isn't readable. Check its
   permissions (it should be owned by you, mode `600`).
+- **"Couldn't read your Ollama plan"** (an amber notice by the name) — the plan badge is missing because
+  Ollama either didn't answer that request or answered with something OpenUsage couldn't read. Your
+  meters are unaffected and still current; the badge comes back on its own once Ollama answers normally.
 - **Meters show "No usage data"** — you're signed in, but Ollama returned no limits for the account yet.
   Check your usage at [ollama.com/settings](https://ollama.com/settings).
